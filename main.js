@@ -28,6 +28,8 @@ classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models
       
   function check()
   {
+    img=document.getElementById("captured_image")
+    classifier.classify(img,gotResult)
   }
 
 
@@ -36,5 +38,7 @@ function gotResult(error, results) {
     console.error(error);
   } else {
     console.log(results);
+    document.getElementById("resultObjectName").innerHTML=results[0].label
+    document.getElementById("resultObjectAccuracy").innerHTML=results[0].confidence.toFixed(2)
   }
 }
